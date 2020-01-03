@@ -1,0 +1,45 @@
+.split_top{
+  height:60px;
+  width:100%;
+  position: fixed ;
+  background-color: green;
+}
+
+.split_left{
+  margin-top:60px;
+  height: 100%;
+  width:20%;
+  position: fixed ;
+  background-color: white;
+  background-image:url('/static/images/gray.jpg')
+}
+
+.split_right{
+  margin-top:60px;
+  margin-left:20%;
+  height: 100%;
+  width:80%;
+  position: fixed ;
+  background-color: #EBEFF2;
+  border-left: 1px ridge black;
+  background-image:url('/static/images/background.jpg')
+}
+
+spam{
+ margin-right:15px;
+}
+
+.menu{
+  margin-top:20%;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.menu a {
+ color:black;
+ font-size:20px;
+ font-family:Times New Roman;
+ text-decoration:none;
+ border-style:none;
+ margin-bottom:20px;
+}

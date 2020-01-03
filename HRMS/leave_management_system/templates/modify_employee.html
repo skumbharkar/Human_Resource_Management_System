@@ -1,0 +1,120 @@
+{% extends 'admin_homepage_basic.html' %}
+{% load static %}
+{% block emp_image%}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+
+{% block content %}
+
+<div style="background-color:white;margin-top:50px;margin-left:15%;margin-right:15%;padding:40px">
+    <div>
+        <font style="font-family:Times New Roman; font-size:30px">Modify Employee</font>
+    </div>
+    <br>
+
+    {% for message in messages %}
+            <font color="red" style="font-family:Times New Roman; font-size:20px;">{{message}}</font>
+    {% endfor %}
+
+    {% if flag == 0 %}
+    <form action="modify_employee?action=check" method="post">
+        {% csrf_token %}
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-12 mb-3">
+                <label>Enter Employee Id</label>
+                <input type="text" class="form-control" name="emp_id" required>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding-top:20px;">
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </form>
+    {% endif %}
+
+    {% if flag == 1 %}
+    <form name="add_employee" action="modify_employee?action=modify" method="post" >
+        {% csrf_token %}
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-4 mb-3">
+                <label>Employee Id</label>
+                <input type="text" class="form-control" name="emp_id" value="{{record.0.employee_id}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="first_name" value="{{record.0.first_name}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="last_name" value="{{record.0.last_name}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-12 mb-3">
+                <label>Department</label>
+                <select class="form-control"  name="dept" required>
+                    <option>{{record.0.department}}</option>
+                    {% for dept in dept %}
+                    <option>{{dept.dept_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-4 mb-3">
+                <label>City/Town</label>
+                <i> (Alphabets only)</i>
+                <input type="text" class="form-control" name="city" pattern="[A-Za-z ]*" value="{{record.0.city_town}}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>State</label>
+                <i> (Alphabets only)</i>
+                <input type="text" class="form-control" name="state" pattern="[A-Za-z ]*" value="{{record.0.state}}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Country</label>
+                <i> (Alphabets only)</i>
+                <input type="text" class="form-control"  name="country" pattern="[A-Za-z ]*" value="{{record.0.country}}" required>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-4 mb-3">
+                <label>Mobile No</label>
+                <font color="red" id="msg_mob"></font>
+                <input type="tel" class="form-control" name="mob" id="mob" onblur="validateForm('mob')" value="{{record.0.mobile_no}}" required>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Status</label>
+                <select class="form-control"  name="status" required>
+                    <option>{{record.0.status}}</option>
+                    <option>Active</option>
+                    <option>Resigned</option>
+                    <option>Left</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-4 mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a style="margin-left:20px;padding-left:20px;;padding-right:20px" href="modify_employee" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+
+    </form>
+
+    {% endif %}
+
+</div>
+
+<script src="{% static 'javascript/employee_validation.js' %}"></script>
+
+{% endblock%}
+

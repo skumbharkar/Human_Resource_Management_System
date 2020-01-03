@@ -1,0 +1,79 @@
+{% extends 'employee_homepage_basic.html' %}
+
+{% block emp_image %}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+{% block content %}
+<div style="background-color:white;margin-top:5%;margin-left:10%;margin-right:10%">
+    <form class="text">
+        <div class="form-row" style="padding:30px;padding-bottom:10px">
+            <font style="font-family:Times New Roman; font-size:30px">Employee Information</font>
+        </div>
+        <div class="form-row" style="padding:30px;padding-bottom:10px">
+            <div class="col-md-4 mb-3">
+                <label for="emp_id">Employee Id</label>
+                <input type="text" class="form-control" id="emp_id" value="{{employee.employee_id}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" value="{{employee.first_name}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" value="{{employee.last_name}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding:30px;padding-bottom:10px">
+            <div class="col-md-4 mb-3">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" value="{{employee.email}}" readonly>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >Department</label>
+                <input type="text" class="form-control"  value="{{employee.department}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="dob">DOB</label>
+                <input type="text" class="form-control" id="dob" placeholder="{{employee.dob}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding:30px;padding-bottom:10px">
+            <div class="col-md-4 mb-3">
+                <label for="addr1">City/Town</label>
+                <input type="text" class="form-control" id="addr1" value="{{employee.city_town}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="addr2">State</label>
+                <input type="text" class="form-control" id="addr2" value="{{employee.state}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label >Country</label>
+                <input type="text" class="form-control"  value="{{employee.country}}" readonly>
+            </div>
+
+        </div>
+
+        <div class="form-row" style="padding:30px;padding-bottom:10px">
+            <div class="col-md-4 mb-3">
+                <label for="mob">Mobile No</label>
+                <input type="text" class="form-control" id="mob" value="{{employee.mobile_no}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="aadhar_card">Aadhar Card</label>
+                <input type="text" class="form-control" id="aadhar_card" value="{{employee.aadhar_no}}" readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="pan_card">Pan Card</label>
+                <input type="text" class="form-control" id="pan_card" value="{{employee.pan_card}}" readonly>
+            </div>
+        </div>
+    <br>
+    </form>
+</div>
+{% endblock %}

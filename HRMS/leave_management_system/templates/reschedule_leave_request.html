@@ -1,0 +1,94 @@
+{% extends 'employee_homepage_basic.html' %}
+
+{% load static %}
+
+{% block emp_image%}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+{% block content %}
+
+<div style="background-color:white;margin-top:50px;margin-left:15%;margin-right:15%;padding:40px">
+    <div>
+        <font style="font-family:Times New Roman; font-size:30px">Reschedule Leave</font>
+    </div>
+
+    {% for message in messages %}
+            <font color="red" style="font-family:Times New Roman; font-size:20px;">{{message}}</font>
+    {% endfor %}
+
+    {% if flag|default:0 == 0 %}
+    <form action="check_leave_id" method="post">
+        {% csrf_token %}
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-12 mb-3">
+                <label>Employee Id</label>
+                <input type="text" class="form-control" name="emp_id" value="{{employee.employee_id}}" readonly>
+            </div>
+        </div>
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-12 mb-3">
+                <label>Enter Leave Id</label>
+                <input type="text" class="form-control" name="leave_id" required>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% else %}
+    <form action="reschedule_leave" method="post">
+        {% csrf_token %}
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-6 mb-3">
+                <label>Leave Id</label>
+                <input type="text" class="form-control" name="leave_id" value="{{leave.leave_id}}" readonly>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Remaining Leaves</label>
+                <input type="text" class="form-control" name="remaining_leaves" value="{{leave.remaining_leaves}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+            <label>Leave Type</label>
+            <input type="text" class="form-control" name="leave_type" value="{{leave.leave_type}}" readonly>
+        </div>
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-4 mb-3">
+                <label>From Date</label>
+                <input type="date" class="form-control" id="from_date" name="from_date" onblur="calculate_days()" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>To Date</label>
+                <input type="date" class="form-control" id="to_date" name="to_date" onblur="calculate_days()" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Total Day's</label>
+                <input type="text" class="form-control" id="total_days" name="total_days" readonly>
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+            <label>Description</label>
+            <input type="text" id="desc" name="desc" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+    {% endif%}
+
+
+</div>
+
+
+<script src="{% static 'javascript/leaves.js' %}"></script>
+
+
+</script>
+
+{% endblock %}

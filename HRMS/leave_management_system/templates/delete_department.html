@@ -1,0 +1,52 @@
+{% extends 'admin_homepage_basic.html' %}
+
+{% block emp_image%}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+
+{% block content %}
+
+<div style="background-color:white;margin-top:10%;margin-left:20%;margin-right:20%;padding:30px">
+
+    <div style="padding-bottom:30px">
+        <font style="font-family:Times New Roman; font-size:30px;">Delete Department</font>
+    </div>
+
+    {% for message in messages %}
+            <font color="red" style="font-family:Times New Roman; font-size:20px;">{{message}}</font>
+    {% endfor %}
+    <form action="delete_department?action=delete" method="post">
+        {% csrf_token %}
+
+        <div class="form-group" style="padding-top:20px">
+            <label>Select Department Code</label>
+                <select class="form-control"  name="dept_code" required>
+                    <option></option>
+                    {% for dept in dept %}
+                    <option>{{dept.dept_code}}</option>
+                    {% endfor %}
+                </select>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+             <label>Select Department Name</label>
+                <select class="form-control"  name="dept_name" required>
+                    <option></option>
+                    {% for dept in dept %}
+                    <option>{{dept.dept_name}}</option>
+                    {% endfor %}
+                </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+
+</div>
+
+{% endblock %}

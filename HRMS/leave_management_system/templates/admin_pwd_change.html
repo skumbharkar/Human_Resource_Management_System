@@ -1,0 +1,50 @@
+{% extends 'admin_homepage_basic.html' %}
+{% load static %}
+
+{% block emp_image %}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+{% block content %}
+
+<div style="background-color:white;margin-top:50px;margin-left:15%;margin-right:15%;padding:40px;" >
+    <div>
+        <font style="font-family:Times New Roman; font-size:30px">Change Password</font>
+    </div>
+    {% for message in messages %}
+            <font color="red" style="font-family:Times New Roman; font-size:20px;">{{message}}</font>
+    {% endfor %}
+    <form action="admin_change_pwd?action=submit" name="add_employee" method="post">
+        {% csrf_token %}
+        <div class="form-group" style="padding-top:20px">
+            <label for="current_pwd">Current Password</label>
+            <input type="password" id="current_pwd" name="current_pwd" class="form-control" required>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+            <label>New Password</label>
+            <font color="red" id="msg_pwd"></font>
+            <input type="password" name="new_pwd" id="pwd" onblur="validateForm('pwd')" class="form-control" required>
+            <small id="passwordHelpInline" class="text-muted">
+                Must be atleast 8 characters long.
+            </small>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+            <label for="confirm_pwd">confirm Password</label>
+            <input type="password" id="confirm_pwd" name="confirm_pwd" class="form-control" required>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+
+</div>
+
+<script src="{% static 'javascript/employee_validation.js' %}"></script>
+
+{% endblock%}

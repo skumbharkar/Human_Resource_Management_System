@@ -1,0 +1,11 @@
+{% extends 'admin_homepage_basic.html' %}
+
+{% block emp_image%}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+{% block content %}
+<img src="/static/images/emp.jpg" height="100%" width="100%">
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body bgcolor='white'>
+<div class="container" style="background-color:#EBEFF2; padding:20px; margin-top:40px; width:350px ">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-employee-tab" data-toggle="tab" href='#' role="tab" aria-controls="nav-employee" aria-selected="true">Employee Login</a>
+    <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="admin_login" role="tab" aria-controls="nav-admin" aria-selected="false">Admin Login</a>
+
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-employee" role="tabpanel" aria-labelledby="nav-employee-tab">
+        <br>
+        <form action="validate_employee" method="post">
+            {% csrf_token %}
+             <div class="form-group">
+                <label for="InputEmail1">Email address</label>
+                <input type="email" class="form-control" name="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+             </div>
+
+             <div class="form-group">
+                 <label for="InputPassword1">Password</label>
+                 <input type="password" class="form-control" name="InputPassword1" placeholder="Password">
+             </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+  </div>
+
+  <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab"></div>
+
+</div>
+</div>
+
+<div class="container" style="background-color:#EBEFF2; padding:20px; margin-top:45px; width:350px;">
+    <p><b>For Support and Queries :</b></p>
+    <p>Email : enable.service@exusia.com</p>
+    <p>Web : www.exusia.com</a></p>
+    <p>Office Contact : +91 20346861259</p>
+    <p>Contact Person : Sachin Kumbharkar</p>
+
+</div>
+
+</body>
+</html>

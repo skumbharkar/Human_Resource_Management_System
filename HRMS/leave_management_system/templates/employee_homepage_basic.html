@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+{%load static%}
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/employee_homepage.css'%}">
+</head>
+
+<body>
+
+<div class="split_top">
+    <h4><font color="white" style="font-family:Times New Roman;padding-left:20px"><spam class="fa fa-bars" style="padding-top:15px"></spam><b> ELMS : Employee</b></font></h4>
+</div>
+
+<div class="split_left">
+
+    <div class="text-center" style="height:300; width:400; margin-left:5%;margin-top:10%;margin-right:25%">
+        <div class="text-center" style="padding-top:20px">
+            {% block emp_image%}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="menu">
+
+        <a href="{% url 'emp_profile' %}" class="btn"><spam class="fa fa-user"></spam>My Profile</a><br>
+        <a href="{% url 'change_pwd_request' %}" class="btn"><spam class="fa fa-unlock"></spam>Change Password</a><br>
+
+        <div class="dropdown btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><spam class="fa fa-bank"></spam>Leaves</a>
+                <ul class="dropdown-menu" >
+                    <li style="padding:5px"><a href="{% url 'leave_request' %}"><spam class="fa fa-plus"></spam>Apply For Leave</a></li>
+                    <li style="padding:5px"><a href="{% url 'cancel_leave_request' %}"><spam class="fa fa-plus"></spam>Cancel Leave</a></li>
+                    <li style="padding:5px"><a href="{% url 'reschedule_leave' %}"><spam class="fa fa-plus"></spam>Reschedule Leave</a></li>
+                    <li style="padding:5px"><a href="{% url 'emp_leaves_history' %}"><spam class="fa fa-history"></spam>Leave History</a></li>
+                </ul>
+        </div><br>
+
+        <a href="{% url 'log_out' %}" class="btn"><spam class="fa fa-sign-out"></spam>Log Out</a>
+
+    </div>
+
+</div>
+
+<div class="split_right">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

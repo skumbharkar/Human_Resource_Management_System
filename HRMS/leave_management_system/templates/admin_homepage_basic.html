@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/admin_homepage.css'%}">
+</head>
+
+<body>
+
+<div class="split_top">
+    <h4><font color="white" style="font-family:Times New Roman;padding-left:20px"><spam class="fa fa-bars" style="padding-top:15px"></spam><b> ELMS : Admin</b></font></h4>
+</div>
+
+<div class="split_left">
+
+    <div class="text-center" style="height:300; width:400; margin-left:5%;margin-top:10%;margin-right:25%">
+        <div class="text-center" style="padding-top:20px">
+            {% block emp_image%}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="menu">
+
+        <a href="display_dashboard" class="btn"><spam class="fa fa-tasks"></spam>Dashboard</a><br>
+
+        <div class="dropdown btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><spam class="fa fa-television"></spam>Leave Management</a>
+                <ul class="dropdown-menu" >
+                    <li><a href="show_all_leaves"><spam class="fa fa-navicon"></spam>All Leaves</a></li>
+                    <li><a href="show_approved_leaves"><spam class="fa fa-check"></spam>Approved Leaves</a></li>
+                    <li><a href="show_NA_leaves"><spam class="fa fa-close"></spam>Not Approved Leaves</a></li>
+                </ul>
+        </div><br>
+
+        <div class="dropdown btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><spam class="fa fa-th"></spam>Department </a>
+                <ul class="dropdown-menu" >
+                    <li><a href="show_departments"><spam class="fa fa-bars"></spam>Show Departments</a></li>
+                    <li><a href="add_department"><spam class="fa fa-plus"></spam>Add Department</a></li>
+                    <li><a href="delete_department"><spam class="fa fa-close"></spam>Delete Department</a></li>
+                </ul>
+        </div><br>
+
+
+        <div class="dropdown btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><spam class="fa fa-user"></spam>Employees </a>
+                <ul class="dropdown-menu" >
+                    <li><a href="add_employee"><spam class="fa fa-plus"></spam>Add Employee</a></li>
+                    <li><a href="modify_employee"><spam class="fa fa-arrows"></spam>Modify Employee</a></li>
+                </ul>
+        </div><br>
+
+        <a href="{% url 'admin_change_pwd' %}" class="btn"><spam class="fa fa-unlock"></spam>Change Password</a><br>
+
+        <a href="{% url 'log_out' %}" class="btn"><spam class="fa fa-sign-out"></spam>Log Out</a>
+
+    </div>
+
+</div>
+
+<div class="split_right">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

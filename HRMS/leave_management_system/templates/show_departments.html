@@ -1,0 +1,46 @@
+{% extends 'admin_homepage_basic.html' %}
+
+{% block emp_image%}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+
+{% block content %}
+
+<div style="background-color:white;margin-top:40px;margin-left:40px;margin-right:40px;padding:30px">
+
+    <div style="padding-bottom:30px">
+        <font style="font-family:Times New Roman; font-size:30px;">Department Information</font>
+    </div>
+
+<table class="table table-hover">
+  <thead class="table-primary">
+    <tr>
+        <th scope="col">No</th>
+        <th scope="col">Department Code</th>
+        <th scope="col">Department Name</th>
+        <th scope="col">Created On</th>
+
+    </tr>
+  </thead>
+
+    {% for department in dept %}
+        <tbody>
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{department.dept_code}}</td>
+                <td>{{department.dept_name}}</td>
+                <td>{{department.created_date}}</td>
+            </tr>
+        </tbody>
+    {% endfor %}
+
+</table>
+
+</div>
+
+
+
+{% endblock %}

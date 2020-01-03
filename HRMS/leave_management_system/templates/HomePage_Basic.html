@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{% static 'css/main_homepage.css'%}" />
+</head>
+
+<body>
+
+<div class="split_top">
+    <h4><font color="white" style="font-family:Times New Roman; padding:15px"><spam class="fa fa-bars"></spam><b> ELMS : Homepage</b></font></h4>
+</div>
+
+
+<div class="split_left">
+
+    {% block content %}
+    {% endblock %}
+
+    <div style="margin-top:10%">
+    <div style="background-color:#EBEFF2; padding:20px; margin-right:20px; margin-left:20px">
+        <p><b>For Support and Queries :</b></p>
+        <p>Email : enable.service@exusia.com</p>
+        <p>Web : www.exusia.com</a></p>
+        <p>Office Contact : +91 20346861259</p>
+        <p>Contact Person : Sachin Kumbharkar</p>
+    </div>
+    </div>
+
+</div>
+
+<div class="split_right">
+    <img src="{% static 'images/emp_manag_system.jpg'%}" alt="default"/>
+</div>
+
+</body>
+</html>

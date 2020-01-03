@@ -1,0 +1,47 @@
+{% extends 'HomePage_Basic.html'%}
+
+{% block content%}
+
+<div style="background-color:#EBEFF2; padding:20px; margin-right:20px; margin-left:20px; margin-top:50px">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-employee-tab" data-toggle="tab" href='#' role="tab" aria-controls="nav-employee" aria-selected="true"><b>Employee Login</b></a>
+      <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="admin_login" role="tab" aria-controls="nav-admin" aria-selected="false"><b>Admin Login</b></a>
+
+  </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+  <div class="tab-pane fade show active" id="nav-employee" role="tabpanel" aria-labelledby="nav-employee-tab">
+        <br>
+
+
+        <form action="validate_employee" method="post">
+            {% csrf_token %}
+
+            {% for message in messages %}
+                <font color="red" style="font-family:Times New Roman; font-size:20px;">{{message}}</font>
+            {% endfor %}
+
+             <div class="form-group">
+                 <label for="InputEmail1">Email Address</label>
+                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+             </div>
+
+             <div class="form-group">
+                 <label for="InputPassword1">Password</label>
+                 <input type="password" class="form-control" name="password" placeholder="Password">
+             </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      <a href="#" style="padding-left:0" class="btn btn-link">Forgotten Password?</a>
+  </div>
+
+  <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab"></div>
+
+</div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,53 @@
+{% extends 'employee_homepage_basic.html' %}
+
+{% block emp_image%}
+    <img class="rounded-circle" src="/media/{{employee.photo}}" alt="..." width="100" height="100"><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">{{employee.first_name}} {{employee.last_name}}</font><br>
+    <font color="black" style="font-family:Times New Roman; font-size:20px;">Employee Id : {{employee.employee_id}}</font>
+{% endblock %}
+
+{% block content %}
+
+<div style="background-color:white;margin-top:50px;margin-left:15%;margin-right:15%;padding:40px">
+    <div>
+        <font style="font-family:Times New Roman; font-size:30px">Cancel Leaves</font>
+    </div>
+
+    {% for message in messages %}
+            <font color="red" style="font-family:Times New Roman; font-size:20px;">{{message}}</font>
+    {% endfor %}
+
+    <form action="cancel_leave" method="post">
+        {% csrf_token %}
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-12 mb-3">
+                <label>Employee Id</label>
+                <input type="text" class="form-control" name="emp_id" value="{{employee.employee_id}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-row" style="padding-top:20px">
+            <div class="col-md-12 mb-3">
+                <label>Enter Leave Id</label>
+                <input type="text" class="form-control" name="leave_id" required>
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+            <label for="leave_type">Select Leave Type</label>
+            <select class="form-control" id="leave_type" name="leave_type" required>
+                <option></option>
+                <option>Sick Leave</option>
+                <option>Emergency Leave</option>
+                <option>Paid Time Off</option>
+                <option>Maternity Leave</option>
+                <option>Transfer Leave</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+{% endblock %}
