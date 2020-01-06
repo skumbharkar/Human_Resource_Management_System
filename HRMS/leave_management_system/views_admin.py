@@ -5,7 +5,8 @@ from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 from datetime import datetime
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
-from django.core import mail
+from django.core.mail import send_mail
+from HRMS.settings import EMAIL_HOST_USER
 
 def validate_admin(request):
 
@@ -91,6 +92,11 @@ def take_action(request):
         rec.leaves_taken=rec.leaves_taken + leave.total_days
         rec.save()
         leave.save()
+        print("Hi........."+EMAIL_HOST_USER)
+        '''subject = 'Welcome to DataFlair'
+        message = 'Hope you are enjoying your Django Tutorials'
+        recepient = ["mayurichidrawar111@gmail.com"]
+        send_mail(subject,message, EMAIL_HOST_USER, recepient, fail_silently=False)'''
     else:
         leave = employee_leaves_details.objects.get(leave_id=leave_id)
         leave.status = status
